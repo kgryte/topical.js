@@ -1,0 +1,52 @@
+{
+  "name": "topical",
+  "version": "0.0.0",
+  "description": "PubSub library.",
+  "author": {
+    "name": "Athan Reines",
+    "email": "kgryte@gmail.com"
+  },
+  "contributors": [
+    {}
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/mocha",
+    "test-cov": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coverage -- -R spec",
+    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coveralls/coverage --report lcovonly -- -R spec && cat ./reports/coveralls/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./reports/coveralls"
+  },
+  "main": "./lib",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kgryte/topical.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kgryte/topical.js/issues"
+  },
+  "keywords": [
+    "pubsub",
+    "dispatch",
+    "publish",
+    "subscribe",
+    "events",
+    "notifications",
+    "notify",
+    "broadcast",
+    "topics"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "1.x.x",
+    "coveralls": "^2.11.1",
+    "istanbul": "^0.3.0",
+    "mocha": "1.x.x"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ]
+}
