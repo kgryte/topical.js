@@ -33,7 +33,9 @@
     "broadcast",
     "topics"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "validate.io-integer": "^1.0.0"
+  },
   "devDependencies": {
     "chai": "1.x.x",
     "coveralls": "^2.11.1",
