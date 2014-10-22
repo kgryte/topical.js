@@ -47,8 +47,10 @@ console.log( topics );
 
 Registers a new topic with the broker. A topic is configurable and has the following options:
 
-*	__max__: `integer` value which specifies the maximum number of subscribers (default: `Number.MAX_VALUE`)
-*	__duplicates__: `boolean` value indicating whether duplicate subscribers are permitted (default: `false`)
+*	__max__: `integer` value which specifies the maximum number of subscribers
+	- 	default: `Number.MAX_VALUE`
+*	__duplicates__: `boolean` value indicating whether duplicate subscribers are permitted
+	- 	default: `false`
 
 To register a new topic,
 
