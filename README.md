@@ -236,7 +236,7 @@ function bar( event ) {
 
 All events emit an object (`event`) with `topic` and `data` properties. If a property is not relevant to the event, the property value is `null`. 
 
-Note: the `data` value type is specific to the event. For example, for `error` events, the `data` value is a `string`. For `subscribed`/`unsubscribed` events, the `data` value is a `function`. See the appropriate event to determine the return value type.
+Note: the `data` value type is specific to the event. For example, for `error` events, the `data` value is a `string`. For `subscribe`/`unsubscribe` events, the `data` value is a `function`. See the appropriate event to determine the return value type.
 
 
 #### 'add'
