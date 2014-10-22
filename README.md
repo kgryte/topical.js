@@ -4,7 +4,7 @@ Topical.js
 
 > JavaScript [PubSub](http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) library.
 
-Quite a few [pubsub libraries](https://www.npmjs.org/search?q=pubsub) already exist. As is the usual case, no library suited either my needs or taste.
+Quite a few [pubsub libraries](https://www.npmjs.org/search?q=pubsub) already exist. As is the usual case, no library suited either my needs or my taste.
 
 Some libraries force you adopt a particular data format when sending messages between decoupled components. Others proved limited and/or buggy.
 
@@ -17,7 +17,7 @@ The novelty of this module is fourfold:
 3. 	__Minimal assumptions__. Few assumptions are made about transmitted data. The only hard requirement is that, when publishing or broadcasting, only one data argument is provided. To publish data involving multiple variables, simply bundle all variables into an `object`.
 4. 	__Flexilibity__. While exposing a singleton broker, the library also provides a method for dynamically creating new brokers. This is convenient when wanting separate brokers for isolated components.
 
-Irrespective of novelty, the principle aim of this library is to facilitate decoupled application architecture. While tight integration can be beneficial, a loosely coupled architecture enables easier testing, more modular design, and small components which do one thing well. Hope this library helps in this regard.
+Irrespective of novelty, the principle aim of this library is to facilitate decoupled application architecture. While tight integration can be beneficial, a loosely coupled architecture enables easier testing, more modular design, and small components which do one thing well. Hopefully this library helps in this regard.
 
 
 
