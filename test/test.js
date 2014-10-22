@@ -629,72 +629,6 @@ describe( 'topical', function tests() {
 
 	}); // end TESTS unsubscribe
 
-	
-	// PUBLISH //
-
-	describe( 'publish', function tests() {
-
-		it( 'should provide a method to publish events to subscribers', function test() {
-			expect( t.publish ).to.be.a( 'function' );
-		});
-
-		it( 'should throw an error if provided a non-string topic', function test() {
-			var values = [
-					5,
-					true,
-					NaN,
-					null,
-					undefined,
-					{},
-					[],
-					function(){}
-				];
-
-			for ( var i = 0; i < values.length; i++ ) {
-				expect( badValue( values[i] ) ).to.throw( TypeError );
-			}
-
-			function badValue( value ) {
-				return function() {
-					t.publish( value, 'beep' );
-				};
-			}
-		});
-
-		it( 'should throw an error if not provided a second argument', function test() {
-			expect( foo ).to.throw( Error );
-			function foo() {
-				t.publish( 'beep' );
-			}
-		});
-
-		it( 'should emit a published event', function test( done ) {
-			t.add( 'beep' );
-			t.on( 'published', function() {
-				assert.ok( true );
-				done();
-			});
-			t.subscribe( 'beep', function(){} );
-			t.publish( 'beep', 'boop' );
-		});
-
-		it( 'should do nothing if topic does not exist', function test() {
-			t.on( 'published', function() {
-				assert.notOk( true );
-			});
-			t.publish( 'beep', 'boop' );
-		});
-
-		it( 'should do nothing if topic has no subscribers', function test() {
-			t.add( 'beep' );
-			t.on( 'published', function() {
-				assert.notOk( true );
-			});
-			t.publish( 'beep', 'boop' );
-		});
-
-	}); // end TESTS publish()
-
 
 	// ONCE //
 
@@ -840,7 +774,73 @@ describe( 'topical', function tests() {
 			}
 		});
 
-	}); // end TESTS subscribe
+	}); // end TESTS once
+
+	
+	// PUBLISH //
+
+	describe( 'publish', function tests() {
+
+		it( 'should provide a method to publish events to subscribers', function test() {
+			expect( t.publish ).to.be.a( 'function' );
+		});
+
+		it( 'should throw an error if provided a non-string topic', function test() {
+			var values = [
+					5,
+					true,
+					NaN,
+					null,
+					undefined,
+					{},
+					[],
+					function(){}
+				];
+
+			for ( var i = 0; i < values.length; i++ ) {
+				expect( badValue( values[i] ) ).to.throw( TypeError );
+			}
+
+			function badValue( value ) {
+				return function() {
+					t.publish( value, 'beep' );
+				};
+			}
+		});
+
+		it( 'should throw an error if not provided a second argument', function test() {
+			expect( foo ).to.throw( Error );
+			function foo() {
+				t.publish( 'beep' );
+			}
+		});
+
+		it( 'should emit a published event', function test( done ) {
+			t.add( 'beep' );
+			t.on( 'published', function() {
+				assert.ok( true );
+				done();
+			});
+			t.subscribe( 'beep', function(){} );
+			t.publish( 'beep', 'boop' );
+		});
+
+		it( 'should do nothing if topic does not exist', function test() {
+			t.on( 'published', function() {
+				assert.notOk( true );
+			});
+			t.publish( 'beep', 'boop' );
+		});
+
+		it( 'should do nothing if topic has no subscribers', function test() {
+			t.add( 'beep' );
+			t.on( 'published', function() {
+				assert.notOk( true );
+			});
+			t.publish( 'beep', 'boop' );
+		});
+
+	}); // end TESTS publish()
 
 
 	// BROADCAST //
