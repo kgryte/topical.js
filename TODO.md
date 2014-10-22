@@ -1,7 +1,7 @@
 TODO
 ====
 
- 
+1. 	Chainable `topical.on()` method (?)
 
 
 ## Comments
