@@ -136,7 +136,7 @@ function bar( event ) {
 
 Note: a topic __must__ exist before attempting to subscribe. If a topic does not exist, an `error` event is emitted (see below).
 
-Additionally, if a topic is `oversubscribed` (i.e., reached it maximum subscriber limit), an `error` event is emitted.
+Additionally, if a topic is `oversubscribed`, i.e., reached its maximum subscriber limit,, an `error` event is emitted.
 
 
 #### unsubscribe( topic, clbk )
@@ -397,7 +397,7 @@ topical.subscribe( 'unknown_topic', function(){} );
 
 ## Notes
 
-When publishing/broadcasting message, the `value` type is left to the user given her particular use case. Internally, `topical` uses a simple `object` with two fields: `topic` and `data`, where `data` may assume any value type. What `value` type you decide to use is up to you.
+When publishing/broadcasting messages, the `value` type is left to the user given her particular use case. Internally, `topical` uses a simple `object` with two fields: `topic` and `data`, where `data` may assume any value type. What `value` type you decide to use is up to you.
 
 
 ## Examples
