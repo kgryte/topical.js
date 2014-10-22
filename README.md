@@ -402,11 +402,158 @@ When publishing/broadcasting messages, the `value` type is left to the user give
 
 ## Examples
 
+Suppose we have the following application components...
+
+Component 1:
+
 ``` javascript
 var topical = require( 'topical' );
+
+module.exports = function component() {
+	topical.subscribe( /^b.+p$/, onEvent );
+};
+
+function onEvent( event ) {
+	console.log( event );
+}
 ```
 
-To run an example from the top-level application directory,
+Component 2:
+
+``` javascript
+var topical = require( 'topical' );
+
+module.exports = function component() {
+	topical
+		.list( onBroadcast )
+		.subscribe( /^ba.+/, onEvent );
+};
+
+function onBroadcast( event ) {
+	console.log( event );
+}
+
+function onEvent( event ) {
+	console.log( event );
+}
+```
+
+Component 3: collects statistics...
+
+``` javascript
+var topical = require( 'topical' );
+
+// Initialize a stats object:
+var stats = {
+	'topics': {},
+	'broadcasts': 0,
+	'public': 0
+};
+
+// Listeners...
+
+topical.on( 'added', onAdd );
+topical.on( 'removed', onRemove );
+topical.on( 'subscribed', onSub );
+topical.on( 'unsubscribed', onUnsub );
+topical.on( 'listed', onList );
+topical.on( 'unlisted', onUnlist );
+topical.on( 'published', onPublish );
+topical.on( 'broadcast', onBroadcast );
+
+function onAdd( event ) {
+	stats.topics[ event.topic ] = {
+		'numSubscribers': 0,
+		'numPublications': 0
+	};
+}
+function onRemove( event ) {
+	delete stats.topics[ event.topic ];
+}
+function onSub( event ) {
+	stats.topics[ event.topic ].numSubscribers += 1;
+}
+function onUnsub( event ) {
+	stats.topics[ event.topic ].numSubscribers -= 1;
+}
+function onList( event ) {
+	stats.public += 1;
+}
+function onUnlist( event ) {
+	stats.public -= 1;
+}
+function onPublish( event ) {
+	stats.topics[ event.topic ].numPublications += 1;
+}
+function onBroadcast() {
+	stats.broadcasts += 1;
+}
+
+
+// EXPORTS //
+
+module.exports = stats;
+```
+
+
+Let's now create a central broker...
+
+``` javascript
+var topical = require( 'topical' ),
+	comp1 = require( './component1.js' ),
+	comp2 = require( './component2.js' ),
+	stats = require( './stats.js' );
+
+// Create some topics...
+var topics = [
+	'beep',
+	'boop',
+	'bap',
+	'baz',
+	'foo'
+];
+
+for ( var i = 0; i < topics.length; i++ ) {
+	topical.add( topics[ i ] );
+}
+
+// Run the components:
+comp1();
+comp2();
+
+// Simulate some chatter...
+var vec = [ 0, 0.2, 0.4, 0.6, 0.8 ],
+	rand,
+	idx,
+	topic,
+	msg;
+
+for ( var j = 0; j < 1000; j++ ) {
+	rand = Math.random();
+	if ( rand > 0.9 ) {
+		topical.broadcast( 'The time is now ' + (new Date()).toString() + '...' );
+		continue;
+	}
+	for ( var k = 0; k < vec.length; k++ ) {
+		if ( vec[k] > rand ) {
+			idx = k-1;
+			break;
+		}
+	}
+	topic = topics[ idx ];
+	if ( rand > 0.5 ) {
+		msg = 'bebop';
+	} else {
+		msg = 'woot';
+	}
+	topical.publish( topic, msg );
+}
+
+// Output the statistics:
+console.log( stats );
+``` 
+
+To run the example from the top-level application directory,
 
 ``` bash
 $ node ./examples/index.js
