@@ -180,7 +180,7 @@ describe( 'topical', function tests() {
 		});
 
 		it( 'should emit an event upon adding a topic', function test( done ) {
-			t.on( 'added', function onAdd() {
+			t.on( 'add', function onAdd() {
 				assert.ok( true );
 				done();
 			});
@@ -190,7 +190,7 @@ describe( 'topical', function tests() {
 		it( 'should do nothing if the topic already exists', function test() {
 			console.log( t.topics() );
 			t.add( 'beep' );
-			t.on( 'added', function() {
+			t.on( 'add', function() {
 				assert.notOk( true );
 			});
 			t.add( 'beep' );
@@ -231,7 +231,7 @@ describe( 'topical', function tests() {
 		});
 
 		it( 'should emit an event upon removing a topic', function test( done ) {
-			t.on( 'removed', function() {
+			t.on( 'remove', function() {
 				assert.ok( t.topics().indexOf( 'beep' ) === -1 );
 				done();
 			});
@@ -240,7 +240,7 @@ describe( 'topical', function tests() {
 		});
 
 		it( 'should do nothing if the topic does not exist', function test() {
-			t.on( 'removed', function() {
+			t.on( 'remove', function() {
 				assert.notOk( true );
 			});
 			t.remove( 'beep' );
@@ -281,7 +281,7 @@ describe( 'topical', function tests() {
 		});
 
 		it( 'should emit an event upon listing', function test( done ) {
-			t.on( 'listed', function() {
+			t.on( 'list', function() {
 				assert.ok( true );
 				done();
 			});
@@ -291,7 +291,7 @@ describe( 'topical', function tests() {
 
 		it( 'should do nothing if the subscriber is already listed', function test() {
 			t.list( boop );
-			t.on( 'listed', function() {
+			t.on( 'list', function() {
 				assert.notOk( true );
 			});
 			t.list( boop );
@@ -335,7 +335,7 @@ describe( 'topical', function tests() {
 		});
 
 		it( 'should emit an event upon unlisting', function test( done ) {
-			t.on( 'unlisted', function() {
+			t.on( 'unlist', function() {
 				assert.ok( true );
 				done();
 			});
@@ -347,7 +347,7 @@ describe( 'topical', function tests() {
 		});
 
 		it( 'should do nothing if the subscriber is not listed', function test() {
-			t.on( 'unlisted', function() {
+			t.on( 'unlist', function() {
 				assert.notOk( true );
 			});
 			t.unlist( boop );
@@ -432,8 +432,8 @@ describe( 'topical', function tests() {
 			t.subscribe( 'beep', function(){} );
 		});
 
-		it( 'should emit a subscribed event', function test( done ) {
-			t.on( 'subscribed', function() {
+		it( 'should emit a subscribe event', function test( done ) {
+			t.on( 'subscribe', function() {
 				assert.ok( true );
 				done();
 			});
@@ -547,14 +547,14 @@ describe( 'topical', function tests() {
 		});
 
 		it( 'should do nothing if the topic does not exist', function test() {
-			t.on( 'unsubscribed', function() {
+			t.on( 'unsubscribe', function() {
 				assert.notOk( true );
 			});
 			t.unsubscribe( 'beep', function(){} );
 		});
 
 		it( 'should do nothing if the subscriber is not subscribed', function test() {
-			t.on( 'unsubscribed', function() {
+			t.on( 'unsubscribe', function() {
 				assert.notOk( true );
 			});
 			t.add( 'beep' );
@@ -571,8 +571,8 @@ describe( 'topical', function tests() {
 			}
 		});
 
-		it( 'should emit an unsubscribed event', function test( done ) {
-			t.on( 'unsubscribed', function() {
+		it( 'should emit an unsubscribe event', function test( done ) {
+			t.on( 'unsubscribe', function() {
 				assert.ok( true );
 				done();
 			});
@@ -703,8 +703,8 @@ describe( 'topical', function tests() {
 			t.once( 'beep', function(){} );
 		});
 
-		it( 'should emit a subscribed event', function test( done ) {
-			t.on( 'subscribed', function() {
+		it( 'should emit a subscribe event', function test( done ) {
+			t.on( 'subscribe', function() {
 				assert.ok( true );
 				done();
 			});
@@ -736,9 +736,9 @@ describe( 'topical', function tests() {
 			}
 		});
 
-		it( 'should emit an unsubscribed event after the first event', function test( done ) {
+		it( 'should emit an unsubscribe event after the first event', function test( done ) {
 			t.add( 'beep' );
-			t.on( 'unsubscribed', foo );
+			t.on( 'unsubscribe', foo );
 			t.once( 'beep', function(){} );
 			t.publish( 'beep', 'boop' );
 			t.publish( 'beep', 'boop' );
@@ -815,9 +815,9 @@ describe( 'topical', function tests() {
 			}
 		});
 
-		it( 'should emit a published event', function test( done ) {
+		it( 'should emit a publish event', function test( done ) {
 			t.add( 'beep' );
-			t.on( 'published', function() {
+			t.on( 'publish', function() {
 				assert.ok( true );
 				done();
 			});
@@ -826,7 +826,7 @@ describe( 'topical', function tests() {
 		});
 
 		it( 'should do nothing if topic does not exist', function test() {
-			t.on( 'published', function() {
+			t.on( 'publish', function() {
 				assert.notOk( true );
 			});
 			t.publish( 'beep', 'boop' );
@@ -834,7 +834,7 @@ describe( 'topical', function tests() {
 
 		it( 'should do nothing if topic has no subscribers', function test() {
 			t.add( 'beep' );
-			t.on( 'published', function() {
+			t.on( 'publish', function() {
 				assert.notOk( true );
 			});
 			t.publish( 'beep', 'boop' );

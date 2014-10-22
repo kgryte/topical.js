@@ -9,13 +9,13 @@ var stats = {
 
 // Listeners...
 
-topical.on( 'added', onAdd );
-topical.on( 'removed', onRemove );
-topical.on( 'subscribed', onSub );
-topical.on( 'unsubscribed', onUnsub );
-topical.on( 'listed', onList );
-topical.on( 'unlisted', onUnlist );
-topical.on( 'published', onPublish );
+topical.on( 'add', onAdd );
+topical.on( 'remove', onRemove );
+topical.on( 'subscribe', onSub );
+topical.on( 'unsubscribe', onUnsub );
+topical.on( 'list', onList );
+topical.on( 'unlist', onUnlist );
+topical.on( 'publish', onPublish );
 topical.on( 'broadcast', onBroadcast );
 
 function onAdd( event ) {

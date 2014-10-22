@@ -239,32 +239,32 @@ All events emit an object (`event`) with `topic` and `data` properties. If a pro
 Note: the `data` value type is specific to the event. For example, for `error` events, the `data` value is a `string`. For `subscribed`/`unsubscribed` events, the `data` value is a `function`. See the appropriate event to determine the return value type.
 
 
-#### 'added'
+#### 'add'
 
 Emitted when a new topic is added to the broker.
 
 ``` javascript
-topical.on( 'added', function onAdd( event ) {
+topical.on( 'add', function onAdd( event ) {
 	console.log( 'Added topic: %s.', event.topic );
 });
 ```
 
-#### 'removed'
+#### 'remove'
 
 Emitted when a topic is removed from the broker.
 
 ``` javascript
-topical.on( 'removed', function onRemove( event ) {
+topical.on( 'remove', function onRemove( event ) {
 	console.log( 'Removed topic: %s.', event.topic );
 });
 ```
 
-#### 'listed'
+#### 'list'
 
 Emitted when a subscriber becomes publicly listed (i.e., open to receiving public broadcasts).
 
 ``` javascript
-topical.on( 'listed', function onList( event ) {
+topical.on( 'list', function onList( event ) {
 	var subscriber = event.data;
 
 	// Send the subscriber a personalized welcome message:
@@ -282,12 +282,12 @@ function foo( event ) {
 ```
 
 
-#### 'unlisted'
+#### 'unlist'
 
 Emitted when a subscriber unsubscribes from public broadcasts.
 
 ``` javascript
-topical.on( 'unlisted', function onUnlist( event ) {
+topical.on( 'unlist', function onUnlist( event ) {
 	var unsubscriber = event.data;
 
 	// Spam the subscriber one more time:
@@ -304,12 +304,12 @@ function foo( event ) {
 ```
 
 
-#### 'subscribed'
+#### 'subscribe'
 
 Emitted when a topic has a new subscriber.
 
 ``` javascript
-topical.on( 'subscribed', function onSub( event ) {
+topical.on( 'subscribe', function onSub( event ) {
 	var clbk = event.data;
 	clbk( 'Welcome to topic %s!', event.topic );
 });
@@ -325,12 +325,12 @@ function onBeep( event ){
 
 
 
-#### 'unsubscribed'
+#### 'unsubscribe'
 
 Emitted when a subscriber unsubscribes from a topic.
 
 ``` javascript
-topical.on( 'unsubscribed', function onUnsub( event ) {
+topical.on( 'unsubscribe', function onUnsub( event ) {
 	var clbk = event.data;
 	clbk( 'Goodbye from topic %s!', event.topic );
 });
@@ -346,12 +346,12 @@ function foo( event ){
 ```
 
 
-#### 'published'
+#### 'publish'
 
 Emitted when an event is published to a topic.
 
 ``` javascript
-topical.on( 'published', function onPublish( event ) {
+topical.on( 'publish', function onPublish( event ) {
 	console.log( 'New event published to topic %s...', event.topic );
 });
 
@@ -452,13 +452,13 @@ var stats = {
 
 // Listeners...
 
-topical.on( 'added', onAdd );
-topical.on( 'removed', onRemove );
-topical.on( 'subscribed', onSub );
-topical.on( 'unsubscribed', onUnsub );
-topical.on( 'listed', onList );
-topical.on( 'unlisted', onUnlist );
-topical.on( 'published', onPublish );
+topical.on( 'add', onAdd );
+topical.on( 'remove', onRemove );
+topical.on( 'subscribe', onSub );
+topical.on( 'unsubscribe', onUnsub );
+topical.on( 'list', onList );
+topical.on( 'unlist', onUnlist );
+topical.on( 'publish', onPublish );
 topical.on( 'broadcast', onBroadcast );
 
 function onAdd( event ) {
