@@ -139,7 +139,7 @@ Note: a topic __must__ exist before attempting to subscribe. If a topic does not
 Additionally, if a topic is `oversubscribed`, i.e., reached its maximum subscriber limit,, an `error` event is emitted.
 
 
-#### unsubscribe( topic, clbk )
+#### topical.unsubscribe( topic, clbk )
 
 Unsubscribes a `callback` from a topic. The topic may be either a `string` or a regular expression. For regular expressions, a `callback` will be unsubscribed from any topics matching the regular expression. 
 

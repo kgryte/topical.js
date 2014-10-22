@@ -24,7 +24,9 @@
   },
   "keywords": [
     "pubsub",
+    "dispatcher",
     "dispatch",
+    "broker",
     "publish",
     "subscribe",
     "events",
