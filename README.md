@@ -27,6 +27,9 @@ Irrespective of novelty, the principle aim of this library is to facilitate deco
 $ npm install topical
 ```
 
+For use in the browser, use [browserify](https://github.com/substack/node-browserify).
+
+
 ## Usage
 
 To use the module,
