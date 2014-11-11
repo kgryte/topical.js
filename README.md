@@ -88,7 +88,7 @@ console.log( topical.topics() );
 
 #### topical.remove( topic )
 
-Removes a topic and all associated subscribers.
+Removes a topic and all associated subscribers. The topic may be either a `string` or a regular expression. For regular expressions, any topics matching the regular expression will be removed.
 
 ``` javascript
 topical
@@ -97,6 +97,15 @@ topical
 
 console.log( topical.topics() );
 // returns []
+
+topical
+	.add( 'beep' )
+	.add( 'boop' )
+	.add( 'foo' )
+	.remove( /^b.+p/ );
+
+console.log( topical.topics() );
+// returns [ 'foo' ]
 ```
 
 
