@@ -252,7 +252,7 @@ describe( 'topical', function tests() {
 				done();
 			});
 			t.add( 'beep' ).add( 'boop' ).add( 'foo' );
-			t.remove( /^b.+p?/ );
+			t.remove( /^b.+p$/ );
 		});
 
 		it( 'should do nothing if the topic does not exist', function test() {
