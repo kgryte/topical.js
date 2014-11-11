@@ -1,3 +1,5 @@
+'use strict';
+
 var topical = require( './../lib' );
 
 // Initialize a stats object:

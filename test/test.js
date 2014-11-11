@@ -1,3 +1,4 @@
+'use strict';
 
 // MODULES //
 
@@ -20,7 +21,6 @@ var expect = chai.expect,
 // TESTS //
 
 describe( 'topical', function tests() {
-	'use strict';
 
 	// SETUP //
 
@@ -358,7 +358,7 @@ describe( 'topical', function tests() {
 
 	}); // end TESTS unlist
 
-	
+
 	// SUBSCRIBE //
 
 	describe( 'subscribe', function tests() {
@@ -489,7 +489,7 @@ describe( 'topical', function tests() {
 
 	}); // end TESTS subscribe
 
-	
+
 	// SUBSCRIBE //
 
 	describe( 'unsubscribe', function tests() {
@@ -776,7 +776,7 @@ describe( 'topical', function tests() {
 
 	}); // end TESTS once
 
-	
+
 	// PUBLISH //
 
 	describe( 'publish', function tests() {

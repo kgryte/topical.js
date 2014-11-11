@@ -1,3 +1,5 @@
+'use strict';
+
 var topical = require( './../lib' ),
 	comp1 = require( './component1.js' ),
 	comp2 = require( './component2.js' ),

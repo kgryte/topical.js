@@ -1,3 +1,5 @@
+'use strict';
+
 var topical = require( './../lib' );
 
 module.exports = function component() {
