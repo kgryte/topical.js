@@ -102,7 +102,7 @@ topical
 	.add( 'beep' )
 	.add( 'boop' )
 	.add( 'foo' )
-	.remove( /^b.+p/ );
+	.remove( /^b.+p?/ );
 
 console.log( topical.topics() );
 // returns [ 'foo' ]
