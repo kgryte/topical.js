@@ -207,7 +207,7 @@ describe( 'topical', function tests() {
 			expect( t.remove ).to.be.a( 'function' );
 		});
 
-		it( 'should throw an error if provided a non-string topic', function test() {
+		it( 'should throw an error if not provided either a string or regular expression', function test() {
 			var values = [
 					5,
 					true,
@@ -237,6 +237,22 @@ describe( 'topical', function tests() {
 			});
 			t.add( 'beep' );
 			t.remove( 'beep' );
+		});
+
+		it( 'should remove any topics matching a pattern', function test( done ) {
+			var counter = 0;
+			t.on( 'remove', function() {
+				if ( ++ counter !== 2 ) {
+					return;
+				}
+				var topics = t.topics();
+				assert.ok( topics.indexOf( 'beep' ) === -1 );
+				assert.ok( topics.indexOf( 'boop' ) === -1 );
+				assert.ok( topics.indexOf( 'foo' ) !== -1 );
+				done();
+			});
+			t.add( 'beep' ).add( 'boop' ).add( 'foo' );
+			t.remove( /^b.+p?/ );
 		});
 
 		it( 'should do nothing if the topic does not exist', function test() {
