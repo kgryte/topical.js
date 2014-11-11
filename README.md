@@ -6,7 +6,7 @@ Topical.js
 
 Quite a few [pubsub libraries](https://www.npmjs.org/search?q=pubsub) already exist. As is the usual case, no library suited either my needs or my tastes.
 
-Some libraries force you adopt a particular data format when sending messages between decoupled components. Others proved limited and/or buggy.
+Some libraries force you to adopt a particular data format when sending messages between decoupled components. Others proved limited and/or buggy.
 
 In general, the [publish-subscribe pattern](http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) is not particularly difficult to implement. Simply expose a method to register subscribers, keep a mapping table of publishers and their respective subscribers, and route messages as they arrive to the appropriate consumers.
 
